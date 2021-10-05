@@ -6,7 +6,7 @@ from models import db, setup_db, Actor, Movie, ActorMovie
 from auth import AuthError, requires_auth
 
 
-EXTERNAL_IP = os.getenv('EXTERNAL_IP', '127.0.0.1:5000')
+EXTERNAL_IP = os.getenv('EXTERNAL_IP', '127.0.0.1')
 
 
 def create_app(test_config=None):
