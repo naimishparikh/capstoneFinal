@@ -16,7 +16,7 @@ def create_app(test_config=None):
   setup_db(app)
   print("after setup db")
   CORS(app)
-
+  print("after CORS")
   return app
 
 print("Calling create_app")
