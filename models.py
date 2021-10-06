@@ -1,15 +1,14 @@
-
 import os
-from sqlalchemy import Column, String, Integer, create_engine,Date, ForeignKey
+from sqlalchemy import Column, String, Integer, create_engine, Date, ForeignKey
 from flask_sqlalchemy import SQLAlchemy
 import json
 from flask_migrate import Migrate
 
-
+# get the required Database environment variables
 DB_NAME = os.getenv('DB_NAME', 'castingagency')
 DB_USER = os.getenv('DB_USER', 'postgres')
 DB_PASSWORD = os.getenv('DB_PASSWORD', '1234')
-DB_HOST = os.getenv('DB_HOST', '127.0.0.1:5432')
+DB_HOST = os.getenv('DB_HOST', '127.0.0.1')
 DB_DIALECT = os.getenv('DB_DIALECT', 'postgresql+psycopg2')
 SQLALCHEMY_DATABASE_URI = "{}://{}:{}@{}/{}".format(
     DB_DIALECT, DB_USER, DB_PASSWORD, DB_HOST, DB_NAME)
@@ -32,10 +31,8 @@ def setup_db(app, database_path=SQLALCHEMY_DATABASE_URI):
     db.create_all()
 
 
-
 '''
-Question
-
+Movie table to store title and release date
 '''
 
 
@@ -46,7 +43,6 @@ class Movie(db.Model):
     title = Column(String)
     releaseDate = Column(Date)
     actorsmovies = db.relationship('ActorMovie', backref='mov', lazy=True)
-
 
     def __init__(self, title, releaseDate):
         self.title = title
@@ -68,9 +64,10 @@ class Movie(db.Model):
             'id': self.id,
             'title': self.title,
             'releaseDate': self.releaseDate,
-         }
+        }
 
 
+# Actor table to store actors info such as name,age,gender
 class Actor(db.Model):
     __tablename__ = 'actors'
 
@@ -104,6 +101,8 @@ class Actor(db.Model):
             "gender": self.gender
         }
 
+
+# This table assigns actor to movie and movie to actor
 class ActorMovie(db.Model):
     __tablename__ = 'actors_movies'
     id = db.Column(db.Integer, primary_key=True)

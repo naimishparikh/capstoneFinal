@@ -1,11 +1,10 @@
 The Casting Agency models a company that is responsible for creating movies and managing and assigning actors to those movies. You are an Executive Producer within the company and are creating a system to simplify and streamline your process.
 
 The application is live and hosted at the following URL on heroku
-
 https://capstoneappnkp10.herokuapp.com/
 
-You can access the following endpoints
 
+You can access the following endpoints
 Following are the endpoint apis
 
 Endpoints/API behavior
@@ -41,26 +40,22 @@ ALGORITHMS = ['RS256']
 API_AUDIENCE = 'actormovie'
 
 
-For testing I have also added a postman collection in following file in the main directory with the successful cases
 
-ActorMovie.postman_collection
-
-The unittest library test suite is available in 
-
-test_app.py
-
-Run as :
-
-python test_app.py
-
--Installing Python Dependencies
- ------------------------------
-
-pip install -r requirments.txt
-
+Installing Python Dependencies
+------------------------------
+- python version used is Python 3.9.2
+- py -m venv env
+- .\env\Scripts\activate
+- pip install -r requirments.txt
+- Install postgres with user 'postgres' and password '1234'
+- createdb -Upostgres castingagency
 - Install heroku cli
-
+- RUN setup.bat or setup.sh to set up environment variables
 - Run the python server locally 
   python app.py
+- This will run the flask server at 127.0.0.1:5000
+- Run the python unittest suite with the following command
+  python test_app.py
+- Postman collection for successful case is available in file ActorMovie.postman_collection
 
-- This will run the server at 127.0.0.1:5000
+
