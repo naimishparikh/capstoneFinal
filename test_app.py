@@ -65,9 +65,9 @@ class ActorsMoviesTestCase(unittest.TestCase):
         self.headersCastingDirector = {'Content-Type': 'application/json',
                                          'Authorization': str_token}
 
-        str_token = 'Bearer ' + ASSISTANT
-        self.headersCastingAssistant = {'Content-Type': 'application/json',
-                                         'Authorization': str_token}
+        #str_token = 'Bearer ' + ASSISTANT
+        #self.headersCastingAssistant = {'Content-Type': 'application/json',
+        #                                 'Authorization': str_token}
 
         # binds the app to the current context
         with self.app.app_context():
@@ -291,6 +291,7 @@ class ActorsMoviesTestCase(unittest.TestCase):
         self.assertEqual(res.status_code, 403)
         self.assertEqual(data['success'], False)
 
+'''
     # test cases for Casting Assistant
     def test_get_actors_ca(self):
         res = self.client().get('/actors', headers=self.headersCastingAssistant)
@@ -313,7 +314,7 @@ class ActorsMoviesTestCase(unittest.TestCase):
 
         self.assertEqual(res.status_code, 403)
         self.assertEqual(data['success'], False)
-
+'''
 
 # Make the tests conveniently executable
 if __name__ == "__main__":
